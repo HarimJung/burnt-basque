@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Plus, Minus, Truck, ClipboardList, Palette, Phone, ShoppingCart, Star, MapPin, Clock, Mail, ChevronDown, Check } from 'lucide-react';
 
@@ -30,7 +30,7 @@ export const useAppContext = () => {
   const ctx = useContext(AppContext);
   if (!ctx) throw new Error("Missing AppContext");
   return ctx;
-}; const Reveal = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
+}; const Reveal: React.FC<{ children: React.ReactNode, className?: string }> = ({ children, className = "" }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -828,7 +828,7 @@ const Order = () => {
   );
 };
 
-const FaqItem = ({ q, a }: { q: string, a: string }) => {
+const FaqItem: React.FC<{ q: string, a: string }> = ({ q, a }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="border-b border-black/10 py-4.5 cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
